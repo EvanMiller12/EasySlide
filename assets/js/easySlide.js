@@ -1,17 +1,27 @@
-$(document).ready(function() {
+"use strict";
 
-var index = 0;
+$(document).ready(function () {
+		var startPosition = 0;
+		var endPosition = 4;
 
-function easySlide() {
-}
+	  var $list_item = $(".easy-slide li").hide();
+    $list_item.slice(startPosition, endPosition).show();
+    var listLen = $list_item.length;
 
+    $('#next').click(function () {
+        if (startPosition + endPosition < listLen) {
+            $list_item.slice(startPosition, startPosition + endPosition).hide();
+            startPosition += 1;
+            $list_item.slice(startPosition, startPosition + endPosition).show();
+        }
+    });
+    $('#prev').click(function () {
+        if (startPosition > 0) {
+            $list_item.slice(startPosition, startPosition + endPosition).hide();
+            startPosition -= 1;
+            $list_item.slice(startPosition, startPosition + endPosition).show();
+        }
 
-// Value of how many li elements are within easy-slide ul
-var listLen = $(".easy-slide > li").length;
-
-console.log(num);
-
-
+    });
 
 });
-
